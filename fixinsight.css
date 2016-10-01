@@ -1,0 +1,322 @@
+ /*
+       * Constants:
+       *      RADIUS      = 12.5
+       *      STROKEWIDTH = 3
+       *      ARCSIZE     = 270 degrees (amount of circle the arc takes up)
+       *      ARCTIME     = 1333ms (time it takes to expand and contract arc)
+       *      ARCSTARTROT = 216 degrees (how much the start location of the arc
+       *                                should rotate each time, 216 gives us a
+       *                                5 pointed star shape (it's 360/5 * 2).
+       *                                For a 7 pointed star, we might do
+       *                                360/7 * 3 = 154.286)
+       *
+       *      SHRINK_TIME = 400ms
+       */
+ 
+ .spinner {
+  margin: 10px 20px;
+  text-align: center;
+  display: none;
+ }
+ 
+ .spinner svg {
+  border-radius: 50%;
+  padding: 8px;
+ }
+ 
+ .qp-circular-loader {
+  width: 64px;
+  /* 2*RADIUS + STROKEWIDTH */
+  
+  height: 64px;
+  /* 2*RADIUS + STROKEWIDTH */
+  
+  stroke-width: 3px;
+ }
+ 
+ .qp-circular-loader-path {
+  stroke-dasharray: 58.9;
+  /* 2*RADIUS*PI * ARCSIZE/360 */
+  
+  stroke-dashoffset: 58.9;
+  /* 2*RADIUS*PI * ARCSIZE/360 */
+  /* hides things initially */
+ }
+ /* SVG elements seem to have a different default origin */
+ 
+ .qp-circular-loader,
+ .qp-circular-loader * {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+ }
+ /* Rotating the whole thing */
+ 
+ @-webkit-keyframes rotate {
+  from {
+   -webkit-transform: rotate(0deg);
+  }
+  to {
+   -webkit-transform: rotate(360deg);
+  }
+ }
+ 
+ @keyframes rotate {
+  from {
+   transform: rotate(0deg);
+  }
+  to {
+   transform: rotate(360deg);
+  }
+ }
+ 
+ .qp-circular-loader {
+  -webkit-animation-name: rotate;
+  animation-name: rotate;
+  -webkit-animation-duration: 1568.63ms;
+  animation-duration: 1568.63ms;
+  /* 360 * ARCTIME / (ARCSTARTROT + (360-ARCSIZE)) */
+  
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+ }
+ /* Filling and unfilling the arc */
+ 
+ @-webkit-keyframes fillunfill {
+  from {
+   stroke-dashoffset: 58.8
+   /* 2*RADIUS*PI * ARCSIZE/360 - 0.1 */
+   /* 0.1 a bit of a magic constant here */
+  }
+  50% {
+   stroke-dashoffset: 0;
+  }
+  to {
+   stroke-dashoffset: -58.4
+   /* -(2*RADIUS*PI * ARCSIZE/360 - 0.5) */
+   /* 0.5 a bit of a magic constant here */
+  }
+ }
+ 
+ @keyframes fillunfill {
+  from {
+   stroke-dashoffset: 58.8
+   /* 2*RADIUS*PI * ARCSIZE/360 - 0.1 */
+   /* 0.1 a bit of a magic constant here */
+  }
+  50% {
+   stroke-dashoffset: 0;
+  }
+  to {
+   stroke-dashoffset: -58.4
+   /* -(2*RADIUS*PI * ARCSIZE/360 - 0.5) */
+   /* 0.5 a bit of a magic constant here */
+  }
+ }
+ 
+ @-webkit-keyframes rot {
+  from {
+   -webkit-transform: rotate(0deg);
+  }
+  to {
+   -webkit-transform: rotate(-360deg);
+  }
+ }
+ 
+ @keyframes rot {
+  from {
+   transform: rotate(0deg);
+  }
+  to {
+   transform: rotate(-360deg);
+  }
+ }
+ 
+ @-webkit-keyframes colors {
+  0% {
+   stroke: #754fa0;
+  }
+  20% {
+   stroke: #09b7bf;
+  }
+  40% {
+   stroke: #90d36b;
+  }
+  60% {
+   stroke: #f2d40d;
+  }
+  80% {
+   stroke: #fcb12b;
+  }
+  100% {
+   stroke: #ed1b72;
+  }
+ }
+ 
+ @keyframes colors {
+  0% {
+   stroke: #754fa0;
+  }
+  20% {
+   stroke: #09b7bf;
+  }
+  40% {
+   stroke: #90d36b;
+  }
+  60% {
+   stroke: #f2d40d;
+  }
+  80% {
+   stroke: #fcb12b;
+  }
+  100% {
+   stroke: #ed1b72;
+  }
+ }
+ .qp-circular-loader-path {
+  -webkit-animation-name: fillunfill, rot, colors;
+  animation-name: fillunfill, rot, colors;
+  -webkit-animation-duration: 1333ms, 5332ms, 5332ms;
+  animation-duration: 1333ms, 5332ms, 5332ms;
+  /* ARCTIME, 4*ARCTIME, 4*ARCTIME */
+  
+  -webkit-animation-iteration-count: infinite, infinite, infinite;
+  animation-iteration-count: infinite, infinite, infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1), steps(4), linear;
+  animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1), steps(4), linear;
+  -webkit-animation-play-state: running, running, running;
+  animation-play-state: running, running, running;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+ }
+body{
+	background-color: #4FC3F7 !important;
+	background-image: none !important;
+	font-family: Roboto;
+	/*display: none !important;*/
+}
+@font-face {
+    font-family: Lato Semibold;
+    src: url("fonts/Lato Semibold.ttf");
+}
+@font-face {
+    font-family: Lato Light;
+    src: url("fonts/Lato Light.ttf");
+}
+@font-face {
+    font-family: Roboto;
+    src: url("fonts/Roboto-Regular.ttf");
+}
+@font-face {
+    font-family: Roboto Light;
+    src: url("fonts/Roboto-Light.ttf");
+}
+.MetroWelcome{
+	display: none !important;
+}
+.col-sm-6{
+	p {
+		display: none !important;
+	}
+}
+.importantkeepalive{
+	display:block !important;
+}
+#loginpanel{
+	background-color: #FAFAFA !important;
+	text-align: center;
+	float: center;
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    border-radius: 2px;
+    box-shadow: 0px 2px 8px #888888;
+    font-family: Roboto;
+}
+
+.btn {
+  position: relative;
+
+  display: block;
+  margin: 30px auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  
+  background-color: #2ecc71;
+  color: #ecf0f1;
+  
+  transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #27ae60;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.btn:before {
+  content: "";
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  display: block;
+  width: 0;
+  padding-top: 0;
+    
+  border-radius: 100%;
+  
+  background-color: rgba(236, 240, 241, .3);
+  
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.btn.forestblue {
+  background-color: #1565C0;
+}
+
+.btn.forestblue:hover, .btn.forestblue:focus {
+  background-color: #01579B;
+}
+
+#errorbackground{
+	background-color: #FFCCCC;
+}
+
+#ebackground{
+	display: none;
+}

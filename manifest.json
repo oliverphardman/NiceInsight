@@ -1,0 +1,27 @@
+{
+	"manifest_version": 2,
+	"name": "NiceInsight",
+	"version": "1.0",
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "popup.html"
+	},
+	"description": "An extension to improve the looks of TASC INSIGHT.",
+	"icons": {
+		"192": "icon.png"
+	},
+
+	"author": "Oliver Hardman",
+	  "content_scripts": [
+    {
+      "matches": ["https://insight.forest.wokingham.sch.uk/secure.aspx*"],
+      "css": ["fixinsight.css", "foundation.css"],
+      "js": ["fixinsight.js"],
+      "run_at": "document_end"   
+    }
+  ],
+ "web_accessible_resources": [
+    "img/*.png",
+    "fonts/*.ttf"
+  ]
+}
