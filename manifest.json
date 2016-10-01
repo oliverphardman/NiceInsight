@@ -14,14 +14,17 @@
 	"author": "Oliver Hardman",
 	  "content_scripts": [
     {
-      "matches": ["https://insight.forest.wokingham.sch.uk/secure.aspx*"],
-      "css": ["fixinsight.css", "foundation.css"],
-      "js": ["fixinsight.js"],
+      "matches": ["https://insight.forest.wokingham.sch.uk/*", "http://insight.forest.wokingham.sch.uk/*", "*://www.insight.forest.wokingham.sch.uk/*"],
+      "css": ["fixinsight.css", "foundation.css", "foundation-icons.css"],
+      "js": ["fixlogin.js", "fixsnapshot.js", "fix403.js", "fixwww.js"],
       "run_at": "document_end"   
     }
   ],
  "web_accessible_resources": [
     "img/*.png",
-    "fonts/*.ttf"
+    "fonts/*.ttf",
+    "svgs/*.svg",
+    "fonts/*",
+    "*.css"
   ]
 }

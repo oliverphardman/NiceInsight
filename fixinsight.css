@@ -12,7 +12,6 @@
        *
        *      SHRINK_TIME = 400ms
        */
- 
  .spinner {
   margin: 10px 20px;
   text-align: center;
@@ -198,19 +197,19 @@ body{
 }
 @font-face {
     font-family: Lato Semibold;
-    src: url("fonts/Lato Semibold.ttf");
+    src: url("chrome-extension://__MSG_@@extension_id__/fonts/Lato Semibold.ttf");
 }
 @font-face {
     font-family: Lato Light;
-    src: url("fonts/Lato Light.ttf");
+    src: url("chrome-extension://__MSG_@@extension_id__/fonts/Lato Light.ttf");
 }
 @font-face {
     font-family: Roboto;
-    src: url("fonts/Roboto-Regular.ttf");
+    src: url("chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Regular.ttf");
 }
 @font-face {
     font-family: Roboto Light;
-    src: url("fonts/Roboto-Light.ttf");
+    src: url("chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Light.ttf");
 }
 .MetroWelcome{
 	display: none !important;
@@ -315,8 +314,86 @@ body{
 
 #errorbackground{
 	background-color: #FFCCCC;
+	display: block;
+	border-radius: 2px;
+	opacity: 0.8;
+	padding-top: 0.5%;
+	padding-bottom:0.1%;
+	margin-top:3%;
+	color: #000000;
+	font-family: Roboto !important;
 }
 
 #ebackground{
 	display: none;
+}
+
+.fields{
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+#insightlogo{
+	padding-bottom: 5%;
+}
+
+#masterbody {
+	background-color: #FAFAFA !important;
+	min-height: 100% !important;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+.fullwidth {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 100% !important;
+}
+
+#topmenu{
+	background-color: #F44336;
+	color: #FFFFFF;
+	overflow: hidden;
+    position: relative;
+    width: 100%;
+    float: center !important;
+    text-align: center !important;
+    display: inline-block !important;
+    box-shadow: 0px 2px 8px #888888;
+}
+
+.topmenubtn{
+	height: inherit;
+	padding-top: 1%;
+	padding-bottom: 1%;
+    margin: 0 auto;
+    background-color: #F44336;
+    border-radius: 0px !important;
+    font-family: Roboto !important;
+	opacity: 1;
+	color: #FFFFFF !important;
+	width: auto !important;
+	box-shadow: none !important;
+}
+
+.snapbuttontext{
+	font-family: Roboto !important;
+	opacity: 1;
+	color: #FFFFFF !important;
+	font-size: 120% !important;
+	line-height: 120%;
+}
+
+.topmenubtn:hover, .topmenubtn:focus {
+  background-color: #E53935;
+}
+
+.buttoncontainer{
+	display: inline !important;
+}
+
+#aftermenu{
+	padding: 2% 2% 2% 2%;
 }
