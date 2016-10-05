@@ -1,0 +1,3 @@
+This Chrome extension is open-source, but please give credit to me. I'm poor, OK?
+
+INSIGHT is a product of TASC Software.
