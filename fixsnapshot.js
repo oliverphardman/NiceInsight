@@ -19,15 +19,14 @@ if (location.pathname.substring(1) == "Info.aspx") {
     var insertHTML =
         `
 	<script>
-function ShowLogoutWarning(){
-	document.getElementById("logoutwarning").style.display = "block";
-	document.getElementById("logoutwarning").style.visibility = "visible";
-	setTimeout(function(){ HideLogoutWarning(); }, 10000);
+function LogoutWarning(){
+	if(document.getElementById("logoutwarning").style.display == "block"){
+		document.getElementById("logoutwarning").style.display = "none";
+		document.getElementById("logoutwarning").style.visibility = "hidden";		
+	}else{
+		document.getElementById("logoutwarning").style.display = "block";
+		document.getElementById("logoutwarning").style.visibility = "visible";
 }
-
-function HideLogoutWarning(){
-	document.getElementById("logoutwarning").style.display = "none";
-	document.getElementById("logoutwarning").style.visibility = "hidden";
 }
 
 function ActuallyLogout(){
@@ -59,11 +58,17 @@ function ToggleMenu(){
 	<button onclick="showContent('Discredits','Behaviour');" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">Discredits</span></button>
 	<button onclick="showContent('Homework','Assignments');" class="btn topmenubtn menuodd" type="button" style="display:inline !important;"><span class="snapbuttontext">Homework</span></button>
 	<button onclick="showContent('Attendance','AttendanceSummary');" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">Attendance</span></button>
-	<button onclick="ShowLogoutWarning();" class="btn" id="profilecontainer" type="button"><span class="snapbuttontext"><img src=` +
-        studentImage +
-        `" height="1" style="display:inline !important;" id="profileimage">` +
+	<button onclick="LogoutWarning();" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">` +
         studentName +
         `</span></button>
+
+
+
+	<!--<button onclick="ShowLogoutWarning();" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext"><img src=` +
+        studentImage +
+        `" height="1" style="display:inline !important;" id="profileimage" id="profileimage">` +
+        studentName +
+        `</span></button> -->
 
 </div>
 <div id="logoutwarning" class="row fullwidth submenu">

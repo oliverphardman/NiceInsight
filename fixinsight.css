@@ -277,7 +277,8 @@ body {
     position: relative;
     display: block;
     margin: 30px auto;
-    padding: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
     overflow: hidden;
     border-width: 0;
     outline: none;
@@ -422,6 +423,7 @@ body {
     font-size: 120% !important;
     line-height: 120%;
     position: relative;
+    display: inline !important;
 }
 
 .profilebuttontext{
@@ -486,8 +488,11 @@ body {
     padding: 0 !important;
     margin: 0 7% 0 0 !important;
     border-radius: 50%;
-    width: 40% !important;
-    height: 6.5% !important;
+   // width: 40% !important;
+   // height: 6.5% !important;
+max-width:100%;
+max-height:100%;
+   display: inline !important;
 }
 
 #logoutwarning {
@@ -507,7 +512,7 @@ body {
 
 @media (max-width: 1300px) {
   #profilecontainer{
-    display: none !important;
+    //display: none !important;
   }
   #mobilemenu{
     display: none !important;
