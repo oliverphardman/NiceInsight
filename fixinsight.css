@@ -26,15 +26,10 @@ tr {
     font-weight: 700;
 }
 
-.
-.spinner {
+#spinner{
+    display: none;
     margin: 10px 20px;
     text-align: center;
-    display: none !important;
-}
-
-#spinner {
-    display: none !important;
 }
 
 .spinner svg {
@@ -393,6 +388,19 @@ body {
     box-shadow: 0 2px 8px #888;
 }
 
+#mobilemenu {
+    background-color: #F44336;
+    color: #FFF;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    float: center !important;
+    text-align: center !important;
+    display: inline-block !important;
+    box-shadow: 0 2px 8px #888;
+    display:none !important;
+}
+
 .topmenubtn {
     height: inherit;
     padding-top: 1%;
@@ -414,7 +422,15 @@ body {
     font-size: 120% !important;
     line-height: 120%;
     position: relative;
-/*top: 50%;*/
+}
+
+.profilebuttontext{
+    font-family: Roboto !important;
+    opacity: 1;
+    color: #FFF !important;
+    font-size: 120% !important;
+    line-height: 120%;
+    position: relative;
     margin-left: 5% !important;
 }
 
@@ -487,4 +503,61 @@ body {
     width: 100% !important;
     margin-right: 0 !important;
     margin-left: 0 !important;
+}
+
+@media (max-width: 1300px) {
+  #profilecontainer{
+    display: none !important;
+  }
+  #mobilemenu{
+    display: none !important;
+  }
+  #topmenu{
+    display: none !important;
+  }
+  .topmenubtn{
+    border-bottom: 2px solid #FFFFFF;
+  }
+  .menutoggle{
+    display: block;
+  }
+  body{
+
+  }
+}
+
+@media (min-width: 1300px) {
+  #profilecontainer{
+    display: block !important;
+  }
+  #mobilemenu{
+    display: none !important;
+  }
+  #topmenu{
+    display: block !important;
+  }
+  .topmenubtn{
+    border-bottom: 2px solid #FFFFFF;
+  }
+  .menutoggle{
+    display: none;
+  }
+  body{
+    padding-top: initial;
+    margin-top: initial;
+  }
+}
+
+.minority{
+  border-bottom: 0px !important;
+}
+
+.menutoggle{
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+  width: 100% !important;
+  background-color: #B71C1C;
+  font-weight: bold;
+  position: absolute;
+  top: 0px;
 }

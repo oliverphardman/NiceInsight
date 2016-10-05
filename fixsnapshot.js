@@ -22,25 +22,42 @@ if (location.pathname.substring(1) == "Info.aspx") {
 function ShowLogoutWarning(){
 	document.getElementById("logoutwarning").style.display = "block";
 	document.getElementById("logoutwarning").style.visibility = "visible";
+	setTimeout(function(){ HideLogoutWarning(); }, 10000);
+}
+
+function HideLogoutWarning(){
+	document.getElementById("logoutwarning").style.display = "none";
+	document.getElementById("logoutwarning").style.visibility = "hidden";
 }
 
 function ActuallyLogout(){
 	var cookies = document.cookie.split(";");
 	document.cookie = ".DBAUTH" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 	document.cookie = "ASP.NET_SessionId" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-	window.location.replace("https://insight.forest.wokingham.sch.uk");
-	alert("i tried ;(");
+	__doPostBack('Logout', 0);
+	//window.location.replace("https://insight.forest.wokingham.sch.uk");
 }
+
+function ToggleMenu(){	
+	if(document.getElementById("buttoncontainer").style.display == "none"){
+		document.getElementById("buttoncontainer").style.display = "inline-block";
+		document.getElementById("menuToggle").innerHTML = "Close";
+	}else{
+		document.getElementById("buttoncontainer").style.display = "none";
+		document.getElementById("menuToggle").innerHTML = "Menu";	
+	}
+}
+
 	</script>
 	<div id="masterbody">
 		<div id="topmenu" class="row fullwidth">
 		<div class="buttoncontainer">
 	<button onclick="showContent('Snapshot','Snapshot');" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">Snapshot</span></button>
-	<button onclick="showContent('Timetable','Timetable');" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">Timetable</span></button>
+	<button onclick="showContent('Timetable','Timetable');" class="btn topmenubtn menuodd" type="button" style="display:inline !important;"><span class="snapbuttontext">Timetable</span></button>
 	<button onclick="showContent('Details','Personal');" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">Details</span></button>
-	<button onclick="showContent('Commendations','Achievements');" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">Commendations</span></button>
+	<button onclick="showContent('Commendations','Achievements');" class="btn topmenubtn menuodd" type="button" style="display:inline !important;"><span class="snapbuttontext">Commendations</span></button>
 	<button onclick="showContent('Discredits','Behaviour');" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">Discredits</span></button>
-	<button onclick="showContent('Homework','Assignments');" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">Homework</span></button>
+	<button onclick="showContent('Homework','Assignments');" class="btn topmenubtn menuodd" type="button" style="display:inline !important;"><span class="snapbuttontext">Homework</span></button>
 	<button onclick="showContent('Attendance','AttendanceSummary');" class="btn topmenubtn" type="button" style="display:inline !important;"><span class="snapbuttontext">Attendance</span></button>
 	<button onclick="ShowLogoutWarning();" class="btn" id="profilecontainer" type="button"><span class="snapbuttontext"><img src=` +
         studentImage +
@@ -53,9 +70,12 @@ function ActuallyLogout(){
 	<button onclick="ActuallyLogout();" class="btn" type="button" style="display:inline !important;"><span class="snapbuttontext">Logout</span></button>
 </div>
 		</div>
+
+
+		
 		<div id="aftermenu">
 		<div class="row">
-			<div id="latestfrs" class="small-4 large-4 columns">
+			<div id="latestfrs" class="small-12 large-4 columns">
 			<h3 class="panelhead">Latest FRS Activity</h3>
 				` +
         frslist + `
